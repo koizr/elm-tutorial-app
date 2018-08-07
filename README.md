@@ -5,14 +5,20 @@
 
 ## setup
 
-### install Node modules
+### Install Node modules
 
 ```sh:elm-tutorial-app/
-npm install
+yarn install
 ```
 
-### API Server
+### Install Eml packages
 
 ```sh:elm-tutorial-app/
-node api.js
+elm-package install
+```
+
+### Start Dev Server
+
+```sh:elm-tutorial-app/
+yarn start
 ```
