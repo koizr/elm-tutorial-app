@@ -11,7 +11,7 @@
 yarn install
 ```
 
-### Install Eml packages
+### Install Elm packages
 
 ```sh:elm-tutorial-app/
 elm-package install
