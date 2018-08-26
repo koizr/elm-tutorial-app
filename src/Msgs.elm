@@ -1,6 +1,7 @@
 module Msgs exposing (..)
 
 import Models exposing (Player)
+import Navigation exposing (Location)
 import RemoteData exposing (WebData)
 
 
@@ -8,3 +9,4 @@ import RemoteData exposing (WebData)
 -- http アクセスの状態を表す 4 つの構築子を持っている
 type Msg
     = OnFetchPlayers (WebData (List Player))
+    | OnLocationChange Location

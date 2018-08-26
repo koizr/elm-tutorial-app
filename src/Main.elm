@@ -1,16 +1,22 @@
 module Main exposing (..)
 
-import Html exposing (Html, div, text, program)
 import Msgs exposing (Msg)
 import Models exposing (Model, initialModel)
 import Update exposing (update)
 import View exposing (view)
 import Commands exposing (fetchPlayers)
+import Navigation exposing (Location)
+import Routing
 
 
-init : ( Model, Cmd Msg )
-init =
-    ( initialModel, fetchPlayers )
+-- location に応じた画面を表示する
+init : Location ->  ( Model, Cmd Msg)
+init location =
+    let
+        currentRoute =
+            Routing.parseLocation location
+    in
+        ( initialModel currentRoute, fetchPlayers )
 
 
 -- Subscription
@@ -26,7 +32,7 @@ subscriptions model =
 
 main : Program Never Model Msg
 main =
-    program
+    Navigation.program Msgs.OnLocationChange
         { init = init
         , view = view
         , update = update

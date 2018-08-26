@@ -4,13 +4,17 @@ import RemoteData exposing (WebData)
 
 
 type alias Model =
-    { players : WebData (List Player) }
+    { players : WebData (List Player)
+    , route : Route
+    }
 
 
 -- 初期表示に使う Model
-initialModel : Model
-initialModel =
-    { players = RemoteData.Loading }
+initialModel : Route -> Model
+initialModel route =
+    { players = RemoteData.Loading
+    , route = route
+    }
 
 
 type alias PlayerId =
@@ -22,3 +26,12 @@ type alias Player =
     , name : String
     , level : Int
     }
+
+
+-- Route
+
+
+type Route
+    = PlayersRoute
+    | PlayerRoute PlayerId
+    | NotFoundRoute -- 他のどの route にもマッチしなかったときにの route
