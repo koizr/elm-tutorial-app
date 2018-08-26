@@ -17,6 +17,7 @@ matchers =
         ]
 
 
+-- location から対応する Route を引き出す
 parseLocation : Location -> Route
 parseLocation location =
     -- parseHash は matchers からマッチした route を Maybe で包んで返す
@@ -28,3 +29,15 @@ parseLocation location =
 
         Nothing ->
             NotFoundRoute
+
+
+-- player 一覧画面のパスを返す
+playersPath : String
+playersPath =
+    "#players"
+
+
+-- player 編集画面のパスを返す
+playerPath : PlayerId -> String
+playerPath id =
+    "#players/" ++ id
